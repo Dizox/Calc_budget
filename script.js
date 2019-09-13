@@ -22,11 +22,16 @@ function chooseExpenses() {
             b = prompt("Во сколько обойдется?");
 
         if ((typeof(a) === 'string') && (typeof(a) != null) && ((typeof(b) != null)) && (a.length > 0) && (b.length > 0) && (a.length < 50)) {
-            console.log("success");
             appData.expenses[a] = b;
         } else {
             i--;
         }
+    }
+}
+
+function chooseOptExpenses() {
+    for (let i = 1; i <= 3; i++) {
+        appData.optionalExpenses[i] = prompt("Введите необязательную статью расходов в этом месяце");
     }
 }
 
@@ -40,12 +45,12 @@ function checkSavings() {
     }
 }
 
-function calcMoneyPerDay() {
+function detectDayBudget() {
     appData.moneyPerDay = (appData.budget / 30).toFixed();
     alert("Ежедневный бюджет: " + appData.moneyPerDay);
 }
 
-function checkWealth() {
+function detectLevel() {
     if(appData.moneyPerDay < 100) {
         console.log("Минимальный уровень достатка");
     } else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
@@ -57,8 +62,11 @@ function checkWealth() {
     }
 }
 
-start();
-chooseExpenses();
-calcMoneyPerDay();
-checkWealth();
-checkSavings();
+
+//start();
+//chooseExpenses();
+chooseOptExpenses()
+//detectDayBudget();
+//detectLevel();
+//checkSavings();
+
